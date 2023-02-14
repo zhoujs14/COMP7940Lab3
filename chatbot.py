@@ -1,7 +1,3 @@
-import configparser
-config = configparser.ConfigParser()
-config.read('config.ini')
-
 ## chatbot.py
 import telegram
 from telegram.ext import Updater, MessageHandler, Filters
