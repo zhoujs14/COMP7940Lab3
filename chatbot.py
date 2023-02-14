@@ -59,13 +59,14 @@ def add(update: Update, context: CallbackContext) -> None:
     #"""Send a message when the command /add is issued."""
     try:
         global redis1
-        logging.info(context.args[0])
+        logging.info(context.args[0]) # output log
         msg = context.args[0]  # /add keyword <-- this should store the keyword
-        redis1.incr(msg)
+        redis1.incr(msg)  # increase the count of keyword in redis database
         update.message.reply_text('You have said ' + msg + ' for ' +
-                          redis1.get(msg).decode('UTF-8') + ' times.')
+                          redis1.get(msg).decode('UTF-8') + ' times.') #reply the times of this keyword
+    # if error occurs
     except (IndexError, ValueError):
-        update.message.reply_text('Usage: /add <keyword>')
+        update.message.reply_text('Usage: /add <keyword>') #reply the usage of add  command
 
 if __name__ == '__main__':
     main()
